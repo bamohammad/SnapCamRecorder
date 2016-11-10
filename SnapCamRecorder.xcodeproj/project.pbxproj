@@ -1,0 +1,535 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		E3FE3C411DD2FA06002A5DDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FE3C401DD2FA06002A5DDD /* AppDelegate.swift */; };
+		E3FE3C431DD2FA06002A5DDD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FE3C421DD2FA06002A5DDD /* ViewController.swift */; };
+		E3FE3C461DD2FA06002A5DDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3FE3C441DD2FA06002A5DDD /* Main.storyboard */; };
+		E3FE3C481DD2FA06002A5DDD /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E3FE3C471DD2FA06002A5DDD /* Assets.xcassets */; };
+		E3FE3C4B1DD2FA06002A5DDD /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3FE3C491DD2FA06002A5DDD /* LaunchScreen.storyboard */; };
+		E3FE3C561DD2FA06002A5DDD /* SnapCamRecorderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FE3C551DD2FA06002A5DDD /* SnapCamRecorderTests.swift */; };
+		E3FE3C611DD2FA06002A5DDD /* SnapCamRecorderUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FE3C601DD2FA06002A5DDD /* SnapCamRecorderUITests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		E3FE3C521DD2FA06002A5DDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E3FE3C351DD2FA06002A5DDD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E3FE3C3C1DD2FA06002A5DDD;
+			remoteInfo = SnapCamRecorder;
+		};
+		E3FE3C5D1DD2FA06002A5DDD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = E3FE3C351DD2FA06002A5DDD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = E3FE3C3C1DD2FA06002A5DDD;
+			remoteInfo = SnapCamRecorder;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		E3FE3C3D1DD2FA06002A5DDD /* SnapCamRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapCamRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3FE3C401DD2FA06002A5DDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E3FE3C421DD2FA06002A5DDD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E3FE3C451DD2FA06002A5DDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E3FE3C471DD2FA06002A5DDD /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E3FE3C4A1DD2FA06002A5DDD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E3FE3C4C1DD2FA06002A5DDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3FE3C511DD2FA06002A5DDD /* SnapCamRecorderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapCamRecorderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3FE3C551DD2FA06002A5DDD /* SnapCamRecorderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCamRecorderTests.swift; sourceTree = "<group>"; };
+		E3FE3C571DD2FA06002A5DDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E3FE3C5C1DD2FA06002A5DDD /* SnapCamRecorderUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SnapCamRecorderUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3FE3C601DD2FA06002A5DDD /* SnapCamRecorderUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapCamRecorderUITests.swift; sourceTree = "<group>"; };
+		E3FE3C621DD2FA06002A5DDD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		E3FE3C3A1DD2FA06002A5DDD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E3FE3C4E1DD2FA06002A5DDD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E3FE3C591DD2FA06002A5DDD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		E3FE3C341DD2FA06002A5DDD = {
+			isa = PBXGroup;
+			children = (
+				E3FE3C3F1DD2FA06002A5DDD /* SnapCamRecorder */,
+				E3FE3C541DD2FA06002A5DDD /* SnapCamRecorderTests */,
+				E3FE3C5F1DD2FA06002A5DDD /* SnapCamRecorderUITests */,
+				E3FE3C3E1DD2FA06002A5DDD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		E3FE3C3E1DD2FA06002A5DDD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				E3FE3C3D1DD2FA06002A5DDD /* SnapCamRecorder.app */,
+				E3FE3C511DD2FA06002A5DDD /* SnapCamRecorderTests.xctest */,
+				E3FE3C5C1DD2FA06002A5DDD /* SnapCamRecorderUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		E3FE3C3F1DD2FA06002A5DDD /* SnapCamRecorder */ = {
+			isa = PBXGroup;
+			children = (
+				E3FE3C401DD2FA06002A5DDD /* AppDelegate.swift */,
+				E3FE3C421DD2FA06002A5DDD /* ViewController.swift */,
+				E3FE3C441DD2FA06002A5DDD /* Main.storyboard */,
+				E3FE3C471DD2FA06002A5DDD /* Assets.xcassets */,
+				E3FE3C491DD2FA06002A5DDD /* LaunchScreen.storyboard */,
+				E3FE3C4C1DD2FA06002A5DDD /* Info.plist */,
+			);
+			path = SnapCamRecorder;
+			sourceTree = "<group>";
+		};
+		E3FE3C541DD2FA06002A5DDD /* SnapCamRecorderTests */ = {
+			isa = PBXGroup;
+			children = (
+				E3FE3C551DD2FA06002A5DDD /* SnapCamRecorderTests.swift */,
+				E3FE3C571DD2FA06002A5DDD /* Info.plist */,
+			);
+			path = SnapCamRecorderTests;
+			sourceTree = "<group>";
+		};
+		E3FE3C5F1DD2FA06002A5DDD /* SnapCamRecorderUITests */ = {
+			isa = PBXGroup;
+			children = (
+				E3FE3C601DD2FA06002A5DDD /* SnapCamRecorderUITests.swift */,
+				E3FE3C621DD2FA06002A5DDD /* Info.plist */,
+			);
+			path = SnapCamRecorderUITests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		E3FE3C3C1DD2FA06002A5DDD /* SnapCamRecorder */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E3FE3C651DD2FA06002A5DDD /* Build configuration list for PBXNativeTarget "SnapCamRecorder" */;
+			buildPhases = (
+				E3FE3C391DD2FA06002A5DDD /* Sources */,
+				E3FE3C3A1DD2FA06002A5DDD /* Frameworks */,
+				E3FE3C3B1DD2FA06002A5DDD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SnapCamRecorder;
+			productName = SnapCamRecorder;
+			productReference = E3FE3C3D1DD2FA06002A5DDD /* SnapCamRecorder.app */;
+			productType = "com.apple.product-type.application";
+		};
+		E3FE3C501DD2FA06002A5DDD /* SnapCamRecorderTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E3FE3C681DD2FA06002A5DDD /* Build configuration list for PBXNativeTarget "SnapCamRecorderTests" */;
+			buildPhases = (
+				E3FE3C4D1DD2FA06002A5DDD /* Sources */,
+				E3FE3C4E1DD2FA06002A5DDD /* Frameworks */,
+				E3FE3C4F1DD2FA06002A5DDD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E3FE3C531DD2FA06002A5DDD /* PBXTargetDependency */,
+			);
+			name = SnapCamRecorderTests;
+			productName = SnapCamRecorderTests;
+			productReference = E3FE3C511DD2FA06002A5DDD /* SnapCamRecorderTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+		E3FE3C5B1DD2FA06002A5DDD /* SnapCamRecorderUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E3FE3C6B1DD2FA06002A5DDD /* Build configuration list for PBXNativeTarget "SnapCamRecorderUITests" */;
+			buildPhases = (
+				E3FE3C581DD2FA06002A5DDD /* Sources */,
+				E3FE3C591DD2FA06002A5DDD /* Frameworks */,
+				E3FE3C5A1DD2FA06002A5DDD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				E3FE3C5E1DD2FA06002A5DDD /* PBXTargetDependency */,
+			);
+			name = SnapCamRecorderUITests;
+			productName = SnapCamRecorderUITests;
+			productReference = E3FE3C5C1DD2FA06002A5DDD /* SnapCamRecorderUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		E3FE3C351DD2FA06002A5DDD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0800;
+				LastUpgradeCheck = 0800;
+				ORGANIZATIONNAME = Clickapps;
+				TargetAttributes = {
+					E3FE3C3C1DD2FA06002A5DDD = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = XZUS96N65E;
+						ProvisioningStyle = Automatic;
+					};
+					E3FE3C501DD2FA06002A5DDD = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = XZUS96N65E;
+						ProvisioningStyle = Automatic;
+						TestTargetID = E3FE3C3C1DD2FA06002A5DDD;
+					};
+					E3FE3C5B1DD2FA06002A5DDD = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = XZUS96N65E;
+						ProvisioningStyle = Automatic;
+						TestTargetID = E3FE3C3C1DD2FA06002A5DDD;
+					};
+				};
+			};
+			buildConfigurationList = E3FE3C381DD2FA06002A5DDD /* Build configuration list for PBXProject "SnapCamRecorder" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = E3FE3C341DD2FA06002A5DDD;
+			productRefGroup = E3FE3C3E1DD2FA06002A5DDD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				E3FE3C3C1DD2FA06002A5DDD /* SnapCamRecorder */,
+				E3FE3C501DD2FA06002A5DDD /* SnapCamRecorderTests */,
+				E3FE3C5B1DD2FA06002A5DDD /* SnapCamRecorderUITests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		E3FE3C3B1DD2FA06002A5DDD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3FE3C4B1DD2FA06002A5DDD /* LaunchScreen.storyboard in Resources */,
+				E3FE3C481DD2FA06002A5DDD /* Assets.xcassets in Resources */,
+				E3FE3C461DD2FA06002A5DDD /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E3FE3C4F1DD2FA06002A5DDD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E3FE3C5A1DD2FA06002A5DDD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		E3FE3C391DD2FA06002A5DDD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3FE3C431DD2FA06002A5DDD /* ViewController.swift in Sources */,
+				E3FE3C411DD2FA06002A5DDD /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E3FE3C4D1DD2FA06002A5DDD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3FE3C561DD2FA06002A5DDD /* SnapCamRecorderTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E3FE3C581DD2FA06002A5DDD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E3FE3C611DD2FA06002A5DDD /* SnapCamRecorderUITests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		E3FE3C531DD2FA06002A5DDD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E3FE3C3C1DD2FA06002A5DDD /* SnapCamRecorder */;
+			targetProxy = E3FE3C521DD2FA06002A5DDD /* PBXContainerItemProxy */;
+		};
+		E3FE3C5E1DD2FA06002A5DDD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = E3FE3C3C1DD2FA06002A5DDD /* SnapCamRecorder */;
+			targetProxy = E3FE3C5D1DD2FA06002A5DDD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		E3FE3C441DD2FA06002A5DDD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E3FE3C451DD2FA06002A5DDD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E3FE3C491DD2FA06002A5DDD /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E3FE3C4A1DD2FA06002A5DDD /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		E3FE3C631DD2FA06002A5DDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		E3FE3C641DD2FA06002A5DDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVES = YES;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		E3FE3C661DD2FA06002A5DDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = XZUS96N65E;
+				INFOPLIST_FILE = SnapCamRecorder/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Clickapps.SnapCamRecorder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Debug;
+		};
+		E3FE3C671DD2FA06002A5DDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = XZUS96N65E;
+				INFOPLIST_FILE = SnapCamRecorder/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Clickapps.SnapCamRecorder;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+			};
+			name = Release;
+		};
+		E3FE3C691DD2FA06002A5DDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = XZUS96N65E;
+				INFOPLIST_FILE = SnapCamRecorderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Clickapps.SnapCamRecorderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SnapCamRecorder.app/SnapCamRecorder";
+			};
+			name = Debug;
+		};
+		E3FE3C6A1DD2FA06002A5DDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				DEVELOPMENT_TEAM = XZUS96N65E;
+				INFOPLIST_FILE = SnapCamRecorderTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Clickapps.SnapCamRecorderTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SnapCamRecorder.app/SnapCamRecorder";
+			};
+			name = Release;
+		};
+		E3FE3C6C1DD2FA06002A5DDD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = XZUS96N65E;
+				INFOPLIST_FILE = SnapCamRecorderUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Clickapps.SnapCamRecorderUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = SnapCamRecorder;
+			};
+			name = Debug;
+		};
+		E3FE3C6D1DD2FA06002A5DDD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				DEVELOPMENT_TEAM = XZUS96N65E;
+				INFOPLIST_FILE = SnapCamRecorderUITests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = Clickapps.SnapCamRecorderUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
+				TEST_TARGET_NAME = SnapCamRecorder;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		E3FE3C381DD2FA06002A5DDD /* Build configuration list for PBXProject "SnapCamRecorder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E3FE3C631DD2FA06002A5DDD /* Debug */,
+				E3FE3C641DD2FA06002A5DDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E3FE3C651DD2FA06002A5DDD /* Build configuration list for PBXNativeTarget "SnapCamRecorder" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E3FE3C661DD2FA06002A5DDD /* Debug */,
+				E3FE3C671DD2FA06002A5DDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E3FE3C681DD2FA06002A5DDD /* Build configuration list for PBXNativeTarget "SnapCamRecorderTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E3FE3C691DD2FA06002A5DDD /* Debug */,
+				E3FE3C6A1DD2FA06002A5DDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		E3FE3C6B1DD2FA06002A5DDD /* Build configuration list for PBXNativeTarget "SnapCamRecorderUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E3FE3C6C1DD2FA06002A5DDD /* Debug */,
+				E3FE3C6D1DD2FA06002A5DDD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = E3FE3C351DD2FA06002A5DDD /* Project object */;
+}
