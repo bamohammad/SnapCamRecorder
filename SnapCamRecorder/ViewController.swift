@@ -24,6 +24,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        vwRecored.alpha = 0
         configureCircle()
     }
 
@@ -102,7 +103,7 @@ class ViewController: UIViewController {
         self.drawAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         self.circle.add(self.drawAnimation, forKey: "draw")
         
-       // vwRecored.alpha = 1
+        vwRecored.alpha = 0
 
         /*
          var frame = CGRect(x: self.circleButton.frame.origin.x - 5, y: self.circleButton.frame.origin.y - 5, width: self.circleButton.frame.size.width + 5, height: self.circleButton.frame.size.height + 5)
