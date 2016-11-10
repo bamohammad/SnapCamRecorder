@@ -13,6 +13,7 @@ class ViewController: UIViewController {
     @IBOutlet var circleButton: UIButton!
     @IBOutlet var vwRecored: UIView!
     var circle: CAShapeLayer!
+    var circleLayer: CAShapeLayer!
     var drawAnimation: CABasicAnimation!
    
     let buttnSize:CGFloat = 70
@@ -41,14 +42,16 @@ class ViewController: UIViewController {
         self.circleButton.frame.size = CGSize(width: buttnSize, height: buttnSize)
         
         // Configure the apperence of the red circle
-        self.vwRecored.alpha = 0.0
+       /* self.vwRecored.alpha = 0.0
         self.vwRecored.frame.size = CGSize(width: buttnSize , height: buttnSize  )
         self.vwRecored.layoutIfNeeded()
         self.vwRecored.layer.cornerRadius = self.vwRecored.frame.size.width / 2
                 self.vwRecored.clipsToBounds = true
+        */
         
+        self.circle.position =  CGPoint (x: self.circleButton.frame.midX - radius, y: self.circleButton.frame.midY - radius)
         
-        self.circle.position =  CGPoint(x: self.circleButton.frame.origin.x + 10 , y: self.circleButton.frame.origin.y + 10)
+        //(x: self.circleButton.frame.origin.x + 10 , y: self.circleButton.frame.origin.y + 10)
         
         // Configure the apperence of the circle
         self.circle.fillColor = UIColor.clear.cgColor
@@ -72,6 +75,15 @@ class ViewController: UIViewController {
         self.circleButton.addTarget(self, action:#selector (endCircleAnimation(sender:)), for: UIControlEvents.touchUpInside)
         self.circleButton.addTarget(self, action:#selector (endCircleAnimation(sender:)), for: UIControlEvents.touchUpOutside)
         
+        
+        // add record cercl
+        circleLayer = CAShapeLayer()
+        let recordRadius: CGFloat = 25
+        circleLayer.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: 2.0 * recordRadius, height: 2.0 * recordRadius)  , cornerRadius: recordRadius).cgPath
+        circleLayer.position = CGPoint(x: self.circleButton.frame.midX - recordRadius, y: self.circleButton.frame.midY - recordRadius)
+        circleLayer.fillColor = UIColor.red.cgColor
+        self.circleButton.layer.addSublayer(self.circleLayer)
+        
     }
     
     func circleAnimation() {
@@ -90,16 +102,16 @@ class ViewController: UIViewController {
         self.drawAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         self.circle.add(self.drawAnimation, forKey: "draw")
         
-        vwRecored.alpha = 1
+       // vwRecored.alpha = 1
 
         /*
          var frame = CGRect(x: self.circleButton.frame.origin.x - 5, y: self.circleButton.frame.origin.y - 5, width: self.circleButton.frame.size.width + 5, height: self.circleButton.frame.size.height + 5)
         */
-         self.vwRecored.transform = CGAffineTransform(scaleX: 0, y: 0)
+         //self.vwRecored.transform = CGAffineTransform(scaleX: 0, y: 0)
         UIView.animate(withDuration: 0.7, animations: {
             
            self.circleButton.transform = CGAffineTransform(scaleX: 1.15,y: 1.15);
-            self.vwRecored.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+            //self.vwRecored.transform = CGAffineTransform(scaleX: 1.3, y: 1.3)
             
             }, completion: nil)
         
@@ -126,11 +138,11 @@ class ViewController: UIViewController {
         UIView.animate(withDuration: 0.5, animations: {
             
             self.circleButton.transform = CGAffineTransform(scaleX: 1,y: 1);
-            self.vwRecored.transform = CGAffineTransform(scaleX: 0, y: 0)
+            //self.vwRecored.transform = CGAffineTransform(scaleX: 0, y: 0)
             
             }, completion: { (finished) -> Void in
                 // ....
-               self.vwRecored.alpha = 0
+               // self.vwRecored.alpha = 0
                 
         })
         
