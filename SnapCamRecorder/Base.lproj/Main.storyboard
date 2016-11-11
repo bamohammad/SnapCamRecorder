@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -18,27 +19,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="tlk-KU-EFW">
-                                <color key="backgroundColor" red="0.97393830128205128" green="0.0" blue="0.054645416331227638" alpha="1" colorSpace="calibratedRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="39" id="17D-Dc-wqV"/>
-                                    <constraint firstAttribute="width" constant="39" id="3uq-9f-3b6"/>
-                                </constraints>
-                            </view>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uBx-Wg-R7w">
-                                <state key="normal" image="circle-outline"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="uBx-Wg-R7w" secondAttribute="height" multiplier="1:1" id="K4m-t3-TkH"/>
+                                    <constraint firstAttribute="height" constant="70" id="afr-Aq-WbU"/>
+                                </constraints>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="tlk-KU-EFW" firstAttribute="centerX" secondItem="uBx-Wg-R7w" secondAttribute="centerX" id="559-pb-8ou"/>
-                            <constraint firstItem="tlk-KU-EFW" firstAttribute="centerY" secondItem="uBx-Wg-R7w" secondAttribute="centerY" id="8Pe-Ah-20h"/>
                             <constraint firstItem="wfy-db-euE" firstAttribute="top" secondItem="uBx-Wg-R7w" secondAttribute="bottom" constant="25" id="DqE-R9-J3p"/>
                             <constraint firstItem="uBx-Wg-R7w" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="bHB-71-AOq"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="VwRecored" destination="tlk-KU-EFW" id="pYz-oK-XnY"/>
                         <outlet property="circleButton" destination="uBx-Wg-R7w" id="EYl-S9-XWB"/>
                     </connections>
                 </viewController>
@@ -47,7 +41,4 @@
             <point key="canvasLocation" x="24.800000000000001" y="36.431784107946029"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="circle-outline" width="85" height="85"/>
-    </resources>
 </document>
