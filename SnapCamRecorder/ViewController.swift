@@ -8,30 +8,30 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,UIGestureRecognizerDelegate {
 
     @IBOutlet var circleButton: UIButton!
+    
     @IBOutlet var vwRecored: UIView!
+    
     var circle: CAShapeLayer!
     var buttonBorder: CAShapeLayer!
-    var circleLayer: CAShapeLayer!
+    var recoredCircleLayer: CAShapeLayer!
+    
     var drawAnimation: CABasicAnimation!
     let buttnSize:CGFloat = 70
 
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
 
         configureCircle()
     }
-
     
     func configureCircle() {
         
 
-        let radius:CGFloat = 33
+        let radius:CGFloat = 35
         self.circle = CAShapeLayer()
         self.buttonBorder = CAShapeLayer()
         
@@ -67,15 +67,16 @@ class ViewController: UIViewController {
         
         // Configure the apperence of the circleButton
         
-        self.circleButton.tintColor = UIColor.gray
+        //self.circleButton.tintColor = UIColor.gray
         
         
         // Add to parent layer
         self.circleButton.layer.addSublayer(self.buttonBorder)
         self.circleButton.layer.addSublayer(self.circle)
         
-        // Target for touch down (hold down)
-        self.circleButton.addTarget(self, action:#selector (startCircleAnimation(sender:)), for: UIControlEvents.touchDown)
+        let longPressGesture = UILongPressGestureRecognizer()
+        longPressGesture.addTarget(self, action: #selector(startCircleAnimation(gesture:)))
+        self.circleButton.addGestureRecognizer(longPressGesture)
         
         // Target for release
         self.circleButton.addTarget(self, action:#selector (endCircleAnimation(sender:)), for: UIControlEvents.touchUpInside)
@@ -83,18 +84,32 @@ class ViewController: UIViewController {
         
         
         // add record cercl
-        circleLayer = CAShapeLayer()
+        recoredCircleLayer = CAShapeLayer()
         let recordRadius: CGFloat = 25
-        circleLayer.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: 2.0 * recordRadius, height: 2.0 * recordRadius)  , cornerRadius: recordRadius).cgPath
-        circleLayer.position = CGPoint(x: self.circleButton.frame.midX - recordRadius, y: self.circleButton.frame.midY - recordRadius)
-        circleLayer.fillColor = UIColor.red.cgColor
-        self.circleButton.layer.addSublayer(self.circleLayer)
+        recoredCircleLayer.path = UIBezierPath(roundedRect: CGRect(x: 25, y: 25, width: 0 , height: 0 )  , cornerRadius: 25).cgPath
+            
+        
+        recoredCircleLayer.position = CGPoint(x: self.circleButton.frame.midX - recordRadius, y: self.circleButton.frame.midY - recordRadius)
+        recoredCircleLayer.fillColor = UIColor.red.cgColor
+        self.circleButton.layer.addSublayer(self.recoredCircleLayer)
         
     }
     
+    
     func circleAnimation() {
         
-        // Configure animation
+        CATransaction.begin()
+        CATransaction.setCompletionBlock({ (finished) -> Void in
+           
+//             self.circle.removeAllAnimations()
+//            self.recoredCircleLayer.removeAllAnimations()
+            
+            self.endCircleAnimation(sender:self.circleButton)
+            print("don anmatioin")
+            
+            
+        })
+        
         self.drawAnimation = CABasicAnimation.init(keyPath: "strokeEnd")
         self.drawAnimation.duration = 6.0
         self.drawAnimation.repeatCount = 1.0    // Animate only once..
@@ -108,34 +123,53 @@ class ViewController: UIViewController {
         self.drawAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         self.circle.add(self.drawAnimation, forKey: "draw")
         
-        // Configure animation
-        let fromValue = 50.0
+        CATransaction.commit()
+        
+       
+        
+        // Configure animation for recored circle
+       /* let fromValue = 50.0
         let toValue =  0
         CATransaction.setDisableActions(true)
-        self.circleLayer.bounds.size.height = CGFloat(toValue)
+        self.recoredCircleLayer.bounds.size.height = CGFloat(toValue)
         let positionAnimation = CABasicAnimation(keyPath: "path")
         positionAnimation.fromValue = fromValue
         positionAnimation.toValue = toValue
         positionAnimation.duration = 6.0
         positionAnimation.repeatCount = 1
-        self.circleLayer.add(positionAnimation, forKey: "bounds")
+        self.recoredCircleLayer.add(positionAnimation, forKey: "bounds")
+       */
         
+        let expandAnimation: CABasicAnimation = CABasicAnimation(keyPath: "path")
+        expandAnimation.fromValue = recoredCircleLayer.path
+        expandAnimation.toValue =  UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: 50, height: 50)  , cornerRadius: 25).cgPath //recoredCircleLayer.path
+        expandAnimation.duration = 1
+        expandAnimation.fillMode = kCAFillModeForwards
+        expandAnimation.isRemovedOnCompletion = false
+        self.recoredCircleLayer.add(expandAnimation, forKey: nil)
 
-        UIView.animate(withDuration: 1, animations: {
-            
-           self.circleButton.transform = CGAffineTransform(scaleX: 1.15,y: 1.15);
-           
-            
-            }, completion: nil)
         
  
     }
     
-    func startCircleAnimation(sender : UIButton) {
-
+    func startCircleAnimation(gesture:UILongPressGestureRecognizer) {
+        
+        if gesture.state == UIGestureRecognizerState.began {
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                
+                self.circleButton.transform = CGAffineTransform(scaleX: 1.15,y: 1.15);
+                
+                }, completion: { (finished) -> Void in
+            })
             circleAnimation()
-        print("Recording started")
-
+            print("Recording started")
+        }
+        else  {
+            
+            endCircleAnimation(sender:self.circleButton)
+            //print ("Stopped")
+        }
     }
     
     func completeCircleAnimation(sender : UIButton) {
@@ -147,6 +181,7 @@ class ViewController: UIViewController {
     func endCircleAnimation(sender : UIButton) {
         
         self.circle.removeAllAnimations()
+        self.recoredCircleLayer.removeAllAnimations()
         print("Recording finshed")
         UIView.animate(withDuration: 0.5, animations: {
             

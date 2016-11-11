@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E34C5AE01DD5C5E800554465 /* SnapCamRecorderButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = E34C5ADF1DD5C5E800554465 /* SnapCamRecorderButton.swift */; };
 		E3FE3C411DD2FA06002A5DDD /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FE3C401DD2FA06002A5DDD /* AppDelegate.swift */; };
 		E3FE3C431DD2FA06002A5DDD /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E3FE3C421DD2FA06002A5DDD /* ViewController.swift */; };
 		E3FE3C461DD2FA06002A5DDD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E3FE3C441DD2FA06002A5DDD /* Main.storyboard */; };
@@ -34,6 +35,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		E34C5ADF1DD5C5E800554465 /* SnapCamRecorderButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SnapCamRecorderButton.swift; sourceTree = "<group>"; };
 		E3FE3C3D1DD2FA06002A5DDD /* SnapCamRecorder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SnapCamRecorder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E3FE3C401DD2FA06002A5DDD /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E3FE3C421DD2FA06002A5DDD /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -74,6 +76,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E34C5ADC1DD5C5C900554465 /* CustomClasses */ = {
+			isa = PBXGroup;
+			children = (
+				E34C5ADF1DD5C5E800554465 /* SnapCamRecorderButton.swift */,
+			);
+			path = CustomClasses;
+			sourceTree = "<group>";
+		};
 		E3FE3C341DD2FA06002A5DDD = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +107,7 @@
 		E3FE3C3F1DD2FA06002A5DDD /* SnapCamRecorder */ = {
 			isa = PBXGroup;
 			children = (
+				E34C5ADC1DD5C5C900554465 /* CustomClasses */,
 				E3FE3C401DD2FA06002A5DDD /* AppDelegate.swift */,
 				E3FE3C421DD2FA06002A5DDD /* ViewController.swift */,
 				E3FE3C441DD2FA06002A5DDD /* Main.storyboard */,
@@ -264,6 +275,7 @@
 			files = (
 				E3FE3C431DD2FA06002A5DDD /* ViewController.swift in Sources */,
 				E3FE3C411DD2FA06002A5DDD /* AppDelegate.swift in Sources */,
+				E34C5AE01DD5C5E800554465 /* SnapCamRecorderButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -512,6 +524,7 @@
 				E3FE3C671DD2FA06002A5DDD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E3FE3C681DD2FA06002A5DDD /* Build configuration list for PBXNativeTarget "SnapCamRecorderTests" */ = {
 			isa = XCConfigurationList;
@@ -520,6 +533,7 @@
 				E3FE3C6A1DD2FA06002A5DDD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		E3FE3C6B1DD2FA06002A5DDD /* Build configuration list for PBXNativeTarget "SnapCamRecorderUITests" */ = {
 			isa = XCConfigurationList;
@@ -528,6 +542,7 @@
 				E3FE3C6D1DD2FA06002A5DDD /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
