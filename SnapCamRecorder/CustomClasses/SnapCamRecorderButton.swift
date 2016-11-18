@@ -32,51 +32,62 @@ import UIKit
     
     var drawProgressCircle: CABasicAnimation!
     let borderWidth = 6
+     //var recordRadius: CGFloat
     
     
     
-   /*
+   
     @IBInspectable var progressBorderColor: UIColor = UIColor.red {
         didSet {
-            layer.borderColor = progressBorderColor.cgColor
+            self.configureProgressCircle()
         }
     }
     
     @IBInspectable var progressBorderWidth: CGFloat = 5.0 {
         didSet {
-            layer.borderWidth = progressBorderWidth
+            self.configureProgressCircle()
         }
     }
     @IBInspectable var borderColor: UIColor = UIColor.lightGray {
         didSet {
-            layer.borderColor = borderColor.cgColor
+            self.configureProgressCircle()
         }
     }
     
-    @IBInspectable var borderWidth: CGFloat = 5.0 {
+    @IBInspectable var btnBorderWidth: CGFloat = 5.0 {
         didSet {
-            layer.borderWidth = borderWidth
+            self.configureProgressCircle()
         }
     }
     @IBInspectable var bcakgroundColor:  UIColor = UIColor.clear {
         didSet {
-            layer.backgroundColor = bcakgroundColor.cgColor
-        }
-    }
-    */
-    @IBInspectable var buttnSize:  CGFloat = 75.0  {
-        didSet {
-            
-            layer.bounds.size = CGSize(width: buttnSize, height: buttnSize)
+            self.configureProgressCircle()
         }
     }
     
- 
+    @IBInspectable var buttnSize:  CGFloat = 75.0 {
+        didSet {
+            self.configureProgressCircle()
+        }
+    }
+    
+    @IBInspectable var recoredCircleLayerColor:  UIColor = UIColor.red {
+        didSet {
+            self.configureProgressCircle()
+        }
+    }
+    
+    @IBInspectable var RecorderTimer:  CFTimeInterval = 6.0 {
+        didSet {
+            self.configureProgressCircle()
+        }
+    }
     
     override public func layoutSubviews() {
         super.layoutSubviews()
         layer.cornerRadius = 0.5 * bounds.size.width
         clipsToBounds = true
+        
     }
     
     
@@ -84,33 +95,35 @@ import UIKit
     override init(frame: CGRect) {
         NSLog("initWithFrame");
         super.init(frame: frame)
-        
-        //self.backgroundColor = UIColor.red
-        self.configureProgressCircle()
-        //_setup()
+
     }
     
     required init(coder: NSCoder) {
         NSLog("initWithCoder");
         super.init(coder: coder)!
-        // put config function here
-        
-        self.layer.bounds.size = CGSize(width: buttnSize, height: buttnSize)
+
         self.configureProgressCircle()
-        self.progressCircleAnimation()
        
         
     }
     
+    
     override func prepareForInterfaceBuilder() {
-        
         
         
     }
     
     private func configureProgressCircle() {
         
+        
+        
+        // setup initanal settings
+
         let radius:CGFloat = buttnSize / 2
+        
+        self.frame.size = CGSize(width: buttnSize, height: buttnSize)
+        
+        self.layer.sublayers?.removeAll()
         
         // add buttnBorder
         buttonBorder = CAShapeLayer()
@@ -121,11 +134,11 @@ import UIKit
         // Configure the apperence of the buttnBorder
         buttonBorder.fillColor = UIColor.clear.cgColor
         buttonBorder.strokeColor = UIColor.lightGray.cgColor
-        buttonBorder.lineWidth = CGFloat(borderWidth)
+        buttonBorder.lineWidth = self.btnBorderWidth
         buttonBorder.strokeEnd = 1
         self.layer.addSublayer(buttonBorder)
         
-        // add progressCircle
+        // create recorder timer
         progressCircle = CAShapeLayer()
         
         // Make a progressCircle circular shape
@@ -133,13 +146,27 @@ import UIKit
         
         // Configure the apperence of the progressCircle
         progressCircle.fillColor = UIColor.clear.cgColor
-        progressCircle.strokeColor = UIColor.red.cgColor
-        progressCircle.lineWidth = CGFloat(borderWidth)
+        progressCircle.strokeColor = self.progressBorderColor.cgColor
+        progressCircle.lineWidth = self.progressBorderWidth
         progressCircle.strokeEnd = 0
         self.layer.addSublayer(progressCircle)
         //buttonBorder
         
+        recoredCircleLayer = CAShapeLayer()
+        let recordRadius = (buttnSize / 3)
+        recoredCircleLayer.path = UIBezierPath(roundedRect: CGRect(x: recordRadius, y: recordRadius, width: 0  , height: 0  )  , cornerRadius: recordRadius).cgPath
         
+        
+        recoredCircleLayer.position = CGPoint(x: (buttnSize / 2) - recordRadius, y: (buttnSize / 2) - recordRadius)
+        recoredCircleLayer.fillColor = recoredCircleLayerColor.cgColor
+        
+        self.layer.addSublayer(recoredCircleLayer)
+        
+        //self.progressCircleAnimation()
+        
+        let longPressGesture = UILongPressGestureRecognizer()
+        longPressGesture.addTarget(self, action: #selector(startCircleAnimation(gesture:)))
+        self.addGestureRecognizer(longPressGesture)
         
     }
     
@@ -150,12 +177,12 @@ import UIKit
         CATransaction.setCompletionBlock({ (finished) -> Void in
             
             print("don anmatioin")
-            
+            self.endCircleAnimation(sender:self)
             
         })
         
         drawProgressCircle = CABasicAnimation.init(keyPath: "strokeEnd")
-        drawProgressCircle.duration = 6.0
+        drawProgressCircle.duration = self.RecorderTimer
         drawProgressCircle.repeatCount = 1.0    // Animate only once..
         
         // Animate from no part of the stroke being drawn to the entire stroke being drawn
@@ -168,10 +195,50 @@ import UIKit
         progressCircle.add(drawProgressCircle, forKey: "draw")
         
         CATransaction.commit()
+        // video recorder circle animation
+        let expandAnimation: CABasicAnimation = CABasicAnimation.init(keyPath: "path")
+        expandAnimation.fromValue = recoredCircleLayer.path
+        let recordRadius = (buttnSize / 3)
+        expandAnimation.toValue =  UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: recordRadius * 2 , height: recordRadius * 2)  , cornerRadius: recordRadius).cgPath
+        expandAnimation.duration = 1
+        expandAnimation.fillMode = kCAFillModeForwards
+        expandAnimation.isRemovedOnCompletion = false
+        self.recoredCircleLayer.add(expandAnimation, forKey: "path")
     
     }
-    
-    
+    func startCircleAnimation(gesture:UILongPressGestureRecognizer) {
+        
+        if gesture.state == UIGestureRecognizerState.began {
+            
+            UIView.animate(withDuration: 0.5, animations: {
+                
+                self.transform = CGAffineTransform(scaleX: 1.15,y: 1.15);
+                
+                }, completion: { (finished) -> Void in
+            })
+            self.progressCircleAnimation()
+        }
+        else  {
+            endCircleAnimation(sender:self)
+        }
+    }
+
+    func endCircleAnimation(sender : UIButton) {
+        
+        self.progressCircle.removeAllAnimations()
+        self.recoredCircleLayer.removeAllAnimations()
+        print("Recording finshed")
+        UIView.animate(withDuration: 0.5, animations: {
+            
+            self.transform = CGAffineTransform(scaleX: 1,y: 1);
+            
+            
+            }, completion: { (finished) -> Void in
+                
+                
+        })
+        
+    }
     
     
 }
