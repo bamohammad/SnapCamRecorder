@@ -7,6 +7,7 @@
 //
 
 import UIKit
+
 @IBDesignable class SnapCamRecorderButton: UIButton {
     
     /**
@@ -32,7 +33,6 @@ import UIKit
     
     var drawProgressCircle: CABasicAnimation!
     let borderWidth = 6
-     //var recordRadius: CGFloat
     
     
     
@@ -77,11 +77,12 @@ import UIKit
         }
     }
     
-    @IBInspectable var RecorderTimer:  CFTimeInterval = 6.0 {
+    @IBInspectable var RecorderTimer:  CGFloat = 6.0 {
         didSet {
             self.configureProgressCircle()
         }
     }
+
     
     override public func layoutSubviews() {
         super.layoutSubviews()
@@ -115,10 +116,7 @@ import UIKit
     
     private func configureProgressCircle() {
         
-        
-        
         // setup initanal settings
-
         let radius:CGFloat = buttnSize / 2
         
         self.frame.size = CGSize(width: buttnSize, height: buttnSize)
@@ -182,7 +180,7 @@ import UIKit
         })
         
         drawProgressCircle = CABasicAnimation.init(keyPath: "strokeEnd")
-        drawProgressCircle.duration = self.RecorderTimer
+        drawProgressCircle.duration = CFTimeInterval(self.RecorderTimer)
         drawProgressCircle.repeatCount = 1.0    // Animate only once..
         
         // Animate from no part of the stroke being drawn to the entire stroke being drawn
