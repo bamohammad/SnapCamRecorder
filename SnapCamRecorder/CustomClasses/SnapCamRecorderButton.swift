@@ -16,6 +16,7 @@ import UIKit
      
      */
     var progressCircle: CAShapeLayer!
+    var progressCircles: CAShapeLayer!
     
     /**
      @var borderCircle
@@ -136,6 +137,22 @@ import UIKit
         buttonBorder.strokeEnd = 1
         self.layer.addSublayer(buttonBorder)
         
+        
+        
+        
+        // create recorder timer
+        progressCircles = CAShapeLayer()
+        
+        // Make a progressCircle circular shape
+        progressCircles.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: radius * 2.0, height: radius * 2.0), cornerRadius: CGFloat(radius)).cgPath
+        
+        // Configure the apperence of the progressCircle
+        progressCircles.fillColor = UIColor.clear.cgColor
+        progressCircles.strokeColor = UIColor.white.cgColor
+        progressCircles.lineWidth = self.progressBorderWidth
+        progressCircles.strokeEnd = 0.507
+        self.layer.addSublayer(progressCircles)
+        
         // create recorder timer
         progressCircle = CAShapeLayer()
         
@@ -146,7 +163,7 @@ import UIKit
         progressCircle.fillColor = UIColor.clear.cgColor
         progressCircle.strokeColor = self.progressBorderColor.cgColor
         progressCircle.lineWidth = self.progressBorderWidth
-        progressCircle.strokeEnd = 0
+        progressCircle.strokeEnd = 0.5
         self.layer.addSublayer(progressCircle)
         //buttonBorder
         
@@ -163,8 +180,18 @@ import UIKit
         //self.progressCircleAnimation()
         
         let longPressGesture = UILongPressGestureRecognizer()
-        longPressGesture.addTarget(self, action: #selector(startCircleAnimation(gesture:)))
+        longPressGesture.addTarget(self, action: #selector(recoredVideo(gesture:)))
+        
+        
+        
+        let tapPressGesture = UITapGestureRecognizer()
+    
+        tapPressGesture.addTarget(self, action: #selector(takePhoto(gesture:)))
+        
+        
+        
         self.addGestureRecognizer(longPressGesture)
+        self.addGestureRecognizer(tapPressGesture)
         
     }
     
@@ -204,21 +231,29 @@ import UIKit
         self.recoredCircleLayer.add(expandAnimation, forKey: "path")
     
     }
-    func startCircleAnimation(gesture:UILongPressGestureRecognizer) {
-        
-        if gesture.state == UIGestureRecognizerState.began {
+    
+    func recoredVideo(gesture:UILongPressGestureRecognizer) {
+        print("recoredVideo started")
+        if gesture.state == .ended {
             
+            endCircleAnimation(sender:self)
+        }
+        else if gesture.state == .began {
             UIView.animate(withDuration: 0.5, animations: {
                 
                 self.transform = CGAffineTransform(scaleX: 1.15,y: 1.15);
                 
-                }, completion: { (finished) -> Void in
+            }, completion: { (finished) -> Void in
             })
-            self.progressCircleAnimation()
+            progressCircleAnimation()
+            print("Recording started")
         }
-        else  {
-            endCircleAnimation(sender:self)
-        }
+    }
+    
+    func takePhoto(gesture:UILongPressGestureRecognizer) {
+        
+        print("Photo taked")
+
     }
 
     func endCircleAnimation(sender : UIButton) {

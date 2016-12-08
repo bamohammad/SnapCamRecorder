@@ -56,7 +56,7 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate {
         self.circle.strokeColor = UIColor.red.cgColor
         self.circle.lineWidth = 5
         
-        self.circle.strokeEnd = 0
+        self.circle.strokeEnd = 0.6
         
         
         // Configure the apperence of the button burder
@@ -79,8 +79,10 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate {
         self.circleButton.addGestureRecognizer(longPressGesture)
         
         // Target for release
-        self.circleButton.addTarget(self, action:#selector (endCircleAnimation(sender:)), for: UIControlEvents.touchUpInside)
-        self.circleButton.addTarget(self, action:#selector (endCircleAnimation(sender:)), for: UIControlEvents.touchUpOutside)
+        
+        // Target for release
+       // self.circleButton.addTarget(self, action:#selector (endCircleAnimation(sender:)), for: UIControlEvents.touchUpInside)
+        //self.circleButton.addTarget(self, action:#selector (endCircleAnimation(sender:)), for: UIControlEvents.touchUpOutside)
         
         
         // add record cercl
@@ -154,21 +156,19 @@ class ViewController: UIViewController,UIGestureRecognizerDelegate {
     
     func startCircleAnimation(gesture:UILongPressGestureRecognizer) {
         
-        if gesture.state == UIGestureRecognizerState.began {
+        if gesture.state == .ended {
             
+            endCircleAnimation(sender:self.circleButton)
+        }
+        else if gesture.state == .began {
             UIView.animate(withDuration: 0.5, animations: {
                 
                 self.circleButton.transform = CGAffineTransform(scaleX: 1.15,y: 1.15);
                 
-                }, completion: { (finished) -> Void in
+            }, completion: { (finished) -> Void in
             })
             circleAnimation()
             print("Recording started")
-        }
-        else  {
-            
-            endCircleAnimation(sender:self.circleButton)
-            //print ("Stopped")
         }
     }
     
