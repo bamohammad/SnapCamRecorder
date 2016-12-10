@@ -28,6 +28,7 @@ import UIKit
     var viewBorder: CAShapeLayer!
     
     var  drawProgressCircle: CABasicAnimation!
+    
     var  drawprogressBorderCircle: CABasicAnimation!
     
     
@@ -42,6 +43,12 @@ import UIKit
         }
         
     }
+    @IBInspectable var backgorundCircleColor:  UIColor = UIColor.gray {
+        didSet {
+            self.configureProgressCircle()
+        }
+        
+    }
     @IBInspectable var borderWidth: CGFloat = 5.0 {
         didSet {
             self.configureProgressCircle()
@@ -49,17 +56,6 @@ import UIKit
     }
     
     @IBInspectable var endProgress: CGFloat = 0.5 {
-        didSet {
-            self.configureProgressCircle()
-        }
-    }
-    @IBInspectable var progressRotationAngle: CGFloat = 35 {
-        didSet {
-            self.configureProgressCircle()
-        }
-    }
-    
-    @IBInspectable var progressAngle: CGFloat = 100 {
         didSet {
             self.configureProgressCircle()
         }
@@ -94,7 +90,7 @@ import UIKit
         }
     
     
-    private func configureProgressCircle() {
+    public func configureProgressCircle() {
         
         // setup initanal settings
         let radius:CGFloat = viewSize / 2
@@ -116,66 +112,60 @@ import UIKit
         viewBorder.strokeEnd = 1
         self.layer.addSublayer(viewBorder)
         
-        
-        
-        
         // create recorder timer
         progressBorderCircles = CAShapeLayer()
         
         // Make a progressCircle circular shape
-        progressBorderCircles.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: radius * 2.0, height: radius * 2.0), cornerRadius: CGFloat(radius)).cgPath
-
-       // progressBorderCircles.transform = makerotat //CATransform3DMakeRotation(30.0 / 180.0 * CGFloat.pi, 0.0, 0.0, 1.0)
+        progressBorderCircles.path = UIBezierPath(arcCenter: CGPoint(x: radius,y: radius), radius: radius, startAngle: CGFloat(-0.5), endAngle:CGFloat(M_PI * 2 - 0.5), clockwise: true).cgPath
+        
         self.transform = CGAffineTransform(rotationAngle: CGFloat(-M_PI_2));
+
         // Configure the apperence of the progressCircle
         progressBorderCircles.fillColor = UIColor.clear.cgColor
-        progressBorderCircles.strokeColor = UIColor.white.cgColor
+        progressBorderCircles.strokeColor = backgorundCircleColor.cgColor
         progressBorderCircles.lineWidth = self.borderWidth
         
         progressBorderCircles.strokeEnd = endProgress
         self.layer.addSublayer(progressBorderCircles)
-        
+    
         // create recorder timer
         progressCircle = CAShapeLayer()
         
         // Make a progressCircle circular shape
-        progressCircle.path = UIBezierPath(roundedRect: CGRect(x: 0, y: 0, width: radius * 2.0, height: radius * 2.0), cornerRadius: CGFloat(radius)).cgPath
+        progressCircle.path = UIBezierPath(arcCenter: CGPoint(x: radius,y: radius), radius: radius, startAngle: CGFloat(-0.5), endAngle:CGFloat(M_PI * 2 - 0.5), clockwise: true).cgPath
         
         // Configure the apperence of the progressCircle
         progressCircle.fillColor = UIColor.clear.cgColor
         progressCircle.strokeColor = self.progressCircleColor.cgColor
         progressCircle.lineWidth = self.borderWidth
         
-        progressCircle.strokeStart = 0.007
-        progressCircle.strokeEnd = endProgress - 0.007
+        progressCircle.strokeStart = 0.01
+        progressCircle.strokeEnd = endProgress - 0.01
         self.layer.addSublayer(progressCircle)
 
         progressCircleAnimation()
     }
     
-    private func progressCircleAnimation () {
+    public func progressCircleAnimation () {
         
         drawProgressCircle = CABasicAnimation()
-    
-        
+
         drawProgressCircle = CABasicAnimation.init(keyPath: "strokeEnd")
-        drawProgressCircle.duration = 2
+        drawProgressCircle.duration = 1
         drawProgressCircle.repeatCount = 1.0    // Animate only once..
         
         // Animate from no part of the stroke being drawn to the entire stroke being drawn
-        drawProgressCircle.fromValue = 0.007
+        drawProgressCircle.fromValue = 0.01
         
         // Set your to value to one to complete animation
-        drawProgressCircle.toValue = endProgress - 0.007
+        drawProgressCircle.toValue = endProgress - 0.01
         
         drawProgressCircle.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         progressCircle.add(drawProgressCircle, forKey: "draw")
-        
-   
-        
+
         drawprogressBorderCircle = CABasicAnimation()
         drawprogressBorderCircle = CABasicAnimation.init(keyPath: "strokeEnd")
-        drawprogressBorderCircle.duration = 2
+        drawprogressBorderCircle.duration = 1
         drawprogressBorderCircle.repeatCount = 1.0    // Animate only once..
         
         // Animate from no part of the stroke being drawn to the entire stroke being drawn
