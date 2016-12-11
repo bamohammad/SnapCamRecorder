@@ -34,37 +34,37 @@ import UIKit
     
     @IBInspectable var progressCircleColor:  UIColor = UIColor.red {
         didSet {
-            self.configureProgressCircle()
+            //self.configureProgressCircle()
         }
     }
     @IBInspectable var borderCircleColor:  UIColor = UIColor.gray {
         didSet {
-             self.configureProgressCircle()
+             //self.configureProgressCircle()
         }
         
     }
     @IBInspectable var backgorundCircleColor:  UIColor = UIColor.gray {
         didSet {
-            self.configureProgressCircle()
+            //self.configureProgressCircle()
         }
         
     }
     @IBInspectable var borderWidth: CGFloat = 5.0 {
         didSet {
-            self.configureProgressCircle()
+            //self.configureProgressCircle()
         }
     }
     
     @IBInspectable var endProgress: CGFloat = 0.5 {
         didSet {
-            self.configureProgressCircle()
+            //self.configureProgressCircle()
         }
     }
     
     //progressAngle
     @IBInspectable var viewSize:  CGFloat = 75.0 {
         didSet {
-            self.configureProgressCircle()
+           // self.configureProgressCircle()
         }
     }
         
@@ -85,11 +85,56 @@ import UIKit
         NSLog("initWithCoder");
         super.init(coder: coder)!
         
-        self.configureProgressCircle()
+        //self.configureProgressCircle()
+            
+            self.transform = CGAffineTransform(rotationAngle: CGFloat(-M_PI_2))
+            
+            self.drowCircle(strokeStart: 0, strokeEnd: 0.3, color: UIColor.red)
+            
+            self.drowCircle(strokeStart: 0.31, strokeEnd: 0.5, color: UIColor.blue)
+            
+            self.drowCircle(strokeStart: 0.51, strokeEnd: 0.7, color: UIColor.green)
+            
+            self.drowCircle(strokeStart: 0.71, strokeEnd: 0.99, color: UIColor.brown)
+            
 
         }
-    
-    
+    public func drowCircle(strokeStart: CGFloat , strokeEnd: CGFloat , color: UIColor) {
+        
+        let radius:CGFloat = viewSize / 2
+        
+        self.frame.size = CGSize(width: viewSize, height: viewSize)
+        
+        let progressCircle = CAShapeLayer()
+
+        progressCircle.path = UIBezierPath(arcCenter: CGPoint(x: radius,y: radius), radius: radius, startAngle: CGFloat(-0.5), endAngle:CGFloat(M_PI * 2 - 0.5), clockwise: true).cgPath
+        
+        // Configure the apperence of the progressCircle
+        progressCircle.fillColor = UIColor.clear.cgColor
+        progressCircle.strokeColor = color.cgColor
+        progressCircle.lineWidth = self.borderWidth
+        
+        progressCircle.strokeStart = strokeStart
+        progressCircle.strokeEnd = strokeEnd
+        self.layer.addSublayer(progressCircle)
+        
+        drawProgressCircle = CABasicAnimation()
+        
+        drawProgressCircle = CABasicAnimation.init(keyPath: "strokeEnd")
+        drawProgressCircle.duration = 1
+        drawProgressCircle.repeatCount = 1.0    // Animate only once..
+        
+        // Animate from no part of the stroke being drawn to the entire stroke being drawn
+        drawProgressCircle.fromValue = strokeStart
+        
+        // Set your to value to one to complete animation
+        drawProgressCircle.toValue = strokeEnd
+        
+        drawProgressCircle.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
+        progressCircle.add(drawProgressCircle, forKey: "draw")
+        
+    }
+    /*
     public func configureProgressCircle() {
         
         // setup initanal settings
@@ -177,5 +222,5 @@ import UIKit
         drawprogressBorderCircle.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseIn)
         progressBorderCircles.add(drawprogressBorderCircle, forKey: "draw")
     }
-
+*/
 }
